@@ -120,12 +120,16 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
+                <artifactId>maven-jar-plugin</artifactId>
                 <executions>
                     <execution>
                         <phase>package</phase>
-                        <goals><goal>copy</goal></goals>
                         <configuration>
+                            <archive>
+                                <manifest>
+                                    <mainClass>com.sda.BusApp.BusAppApplication</mainClass>
+                                </manifest>
+                            </archive>
                             <artifactItems>
                                 <artifactItem>
                                     <groupId>com.heroku</groupId>
