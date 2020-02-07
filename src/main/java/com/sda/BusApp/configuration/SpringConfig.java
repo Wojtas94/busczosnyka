@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -29,6 +30,7 @@ public class SpringConfig implements WebMvcConfigurer {
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
     }
+
 
 
 }
