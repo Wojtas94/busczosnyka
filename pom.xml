@@ -126,7 +126,6 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <classpathPrefix>lib/</classpathPrefix>
                             <mainClass>com.sda.BusApp.BusAppApplication</mainClass>
                         </manifest>
                     </archive>
