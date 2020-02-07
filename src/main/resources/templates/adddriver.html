@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Dodaj kierowce</title>
+</head>
+<body>
+<div th:insert="fragments/header"></div>
+<div class="container">
+    <form th:action="@{/adddriver}" th:object="${driverToAdd}" method="post">
+        <div class="form-group">
+            <label for="name">Imie</label>
+            <input type="text" class="form-control" id="name" th:field="*{name}" required/>
+        </div>
+        <div class="form-group">
+            <label for="surname">Nazwisko</label>
+            <input type="text" class="form-control" id="surname" th:field="*{surname}" required/>
+        </div>
+        <div class="form-group">
+            <label for="dateOfExamination">Data badania lekarskiego</label>
+            <input type="date" class="form-control" id="dateOfExamination" th:field="*{dateOfExamination}"/>
+        </div>
+        <div class="form-group">
+            <label for="isAvailable">Dostępność</label>
+            <select class="form-control" id="isAvailable" th:field="*{isAvailable}">
+                <option th:each="isAvailable: ${T(com.sda.BusApp.model.IsAvailable).values()}"
+                        th:value="${isAvailable}"
+                        th:text="${isAvailable}">
+                </option>
+
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success">Dodaj</button>
+        <a href="/main"><button type="button" class="btn btn-info">Strona główna</button></a>
+        <a href="/drivers"><button type="button" class="btn btn-primary">Wstecz</button></a>
+
+
+    </form>
+</div>
+<div th:insert="fragments/footer"></div>
+</body>
+</html>

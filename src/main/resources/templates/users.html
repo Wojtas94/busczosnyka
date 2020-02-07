@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Użytkownicy</title>
+</head>
+<body>
+<div th:insert="fragments/header"></div>
+<div class="container">
+    <form action="/users" method="post">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Imię</th>
+                <th scope="col">Nazwisko</th>
+                <th scope="col">Data utworzenia</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${allusers}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.surname}"></td>
+                <td th:text="${user.joinDate}"></td>
+                <td><input class="form-checked-input" type="radio" name="userId" checked value="${user.id}" th:value="${user.id}" ></td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="/main"><button type="button" class="btn btn-info">Strona główna</button></a>
+        <button type="submit" class="btn btn-primary" name="action" value="ADD">Dodaj użytkownika</button>
+        <button type="submit" class="btn btn-danger" name="action" value="DELETE">Usuń użytkownika</button>
+    </form>
+</div>
+<div th:insert="fragments/footer"></div>
+</body>
+</html>

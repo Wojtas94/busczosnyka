@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Brak napraw</title>
+</head>
+<body>
+<div th:insert="fragments/header"></div>
+<div class="container">
+    <form action="/emptyrepairs" method="post">
+        <div class="alert alert-primary" role="alert">
+           Autobus nie posiada napraw w bazie danych
+        </div>
+        <button class="btn btn-secondary" type="submit">Dodaj naprawę</button>
+        <a href="/main"><button type = "button" class="btn btn-info">Strona główna</button> </a>
+        <a href="/buses"><button type = "button" class="btn btn-primary">Busy</button> </a>
+    </form>
+</div>
+<div th:insert="fragments/footer"></div>
+</body>
+</html>

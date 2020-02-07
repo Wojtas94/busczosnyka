@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Edytowanie kierowcy</title>
+</head>
+<body>
+<div th:insert="fragments/header"></div>
+<div class="container">
+    <form th:action="@{/editdriver}" th:object="${driverToEdit}" method="post">
+        <div class="form-group">
+            <label for="name">Imie</label>
+            <input type="text" class="form-control" id="name" th:field="*{name}" th:value="${driverToEdit.name}" required/>
+        </div>
+        <div class="form-group">
+            <label for="surname">Nazwisko</label>
+            <input type="text" class="form-control" id="surname" th:field="*{surname}" th:value=${driverToEdit.surname} required/>
+        </div>
+        <div class="form-group">
+            <label for="dateOfExamination">Data badania lekarskiego</label>
+            <input type="date" class="form-control" id="dateOfExamination" th:field="*{dateOfExamination}" th:value=${driverToEdit.dateOfExamination}/>
+        </div>
+        <div class="form-group">
+            <label for="isAvailable">Dostępność</label>
+            <select class="form-control" id="isAvailable" th:field="*{isAvailable}">
+                <option th:each="isAvailable: ${T(com.sda.BusApp.model.IsAvailable).values()}"
+                        th:value="${isAvailable}"
+                        th:text="${isAvailable}">
+                </option>
+
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success">Edytuj</button>
+        <a href="/main"><button type="button" class="btn btn-primary">Strona główna</button></a>
+        <a href="/drivers"><button type="button" class="btn btn-info">Kierowcy</button></a>
+    </form>
+</div>
+<div th:insert="fragments/footer"></div>
+</body>
+</html>

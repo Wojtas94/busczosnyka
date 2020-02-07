@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:fragment="header" xmlns:th="http://www.w3.org/1999/xhtml">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8"/>
+    <title>Logowanie</title>
+</head>
+<body>
+<div id = "nav">
+    <nav class="container">
+        <a class="navbar-brand">
+            <img src="../../static/images/czosnyka.png" width="50" height="50" alt=""/>
+            Aplikacja autobusowa firmy Autokarowe Przewozy
+        </a>
+    </nav>
+</div>
+<div class="d-flex justify-content-center">
+    <form th:action="@{/login-process}" method="post">
+        <div class="logo"><h3>Logowanie</h3></div>
+        <!-- Main Form -->
+        <div class="login-form-1">
+            <form id="login-form" class="text-left">
+                    <div class="login-group">
+                        <div class="form-group" style="width: 300px">
+                            <label for="lg_username" class="sr-only">Login</label>
+                            <input type="text" class="form-control" id="lg_username" name="login" placeholder="login">
+                        </div>
+                        <div class="form-group" style="width: 300px">
+                            <label for="lg_password" class="sr-only">Password</label>
+                            <input type="password" class="form-control" id="lg_password" name="password"
+                                   placeholder="password">
+                        </div>
+                        <div class="form-group login-group-checkbox">
+                            <input type="checkbox" id="lg_remember" name="lg_remember">
+                            <label for="lg_remember">remember</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-warning">Zaloguj</button>
+                <div class="etc-login-form">
+                    <p>forgot your password? <a href="/retrievepassword">click here</a></p>
+                </div>
+
+            </form>
+        </div>
+        <!-- end:Main Form -->
+    </form>
+</div>
+<div id = "footer">
+    <footer class="page-footer font-small blue">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2018 Copyright:
+            <a href="http://www.autokaroweprzewozy.pl/"> www.autokaroweprzewozy.pl</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+</div>
+</body>
+</html>

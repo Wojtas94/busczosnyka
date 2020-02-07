@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Edytuj wycieczke strona trzecia</title>
+</head>
+<body>
+<div th:insert="fragments/header"></div>
+<div class="container">
+    <form th:action="@{/edittripthirdpage}" th:object="${drivers}" method="post">
+        <h4>Zaznacz kierowce/ów których wybierasz na wycieczkę:</h4>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Imie</th>
+                <th scope="col">Nazwisko</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="driver : ${drivers}">
+                <td th:text="${driver.id}"></td>
+                <td th:text="${driver.name}"></td>
+                <td th:text="${driver.surname}"></td>
+                <td><input class="form-checked-input" type="checkbox" th:checked="${driver.isChecked} ? 'checked'" name="driverIds" th:value="${driver.id}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-success">Dalej</button>
+        <a href="/main"><button type="button" class="btn btn-info">Strona główna</button></a>
+        <a href="/edittripsecondpage"><button type="button" class="btn btn-primary">Wstecz</button></a>
+
+    </form>
+</div>
+<div th:insert="fragments/footer"></div>
+</body>
+</html>

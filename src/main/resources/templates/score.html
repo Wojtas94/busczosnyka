@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Cena wycieczki - wynik</title>
+</head>
+<body>
+<div th:insert="fragments/header"></div>
+<div class="container">
+    <form th:action="@{/score}" th:value="${priceOfTrip}" >
+    <div class="alert alert-success" role="alert">
+       Cena wycieczki: <strong th:text="${priceOfTrip}"></strong>zł
+    </div>
+        <button onclick="goBack()" class="btn btn-primary" type="button">Wstecz</button>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+        <a href="main"><button type="button" class="btn btn-info">Strona główna</button> </a>
+    </form>
+</div>
+<div th:insert="fragments/footer"></div>
+</body>
+</html>

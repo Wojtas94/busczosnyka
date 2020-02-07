@@ -1,0 +1,43 @@
+where <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Wycieczki</title>
+</head>
+<body>
+<div th:insert="fragments/header"></div>
+<div class="container">
+    <form action="/trips" method="post">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Data i czas wyjazdu</th>
+                <th scope="col">Data i czas powrotu</th>
+                <th scope="col">Miejsce wyjazdu</th>
+                <th scope="col">Miesce docelowe</th>
+                <th scope="col">Ilość pasażerów</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="trip : ${allTrips}">
+                <td th:text="${trip.id}"></td>
+                <td th:text="${#temporals.format(trip.startDateAndTime, 'dd-MM-yyyy HH:mm')}"></td>
+                <td th:text="${#temporals.format(trip.finishDateAndTime, 'dd-MM-yyyy HH:mm')}"></td>
+                <td th:text="${trip.startPlace}"></td>
+                <td th:text="${trip.finishPlace}"></td>
+                <td th:text="${trip.amountOfPassengers}"></td>
+                <td><input class="form-checked-input" type="radio" name="tripId" checked value="${trip.id}" th:value="${trip.id}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="/main"><button type="button" class="btn btn-info">Strona główna</button></a>
+        <button type="submit" class="btn btn-primary" name="action" value="ADD">Dodaj wycieczke</button>
+        <button type="submit" class="btn btn-success" name="action" value="UPDATE">Edytuj wycieczkę</button>
+        <button type="submit" class="btn btn-danger" name="action" value="DELETE">Usuń wycieczkę</button>
+        <button type="submit" class="btn btn-dark" name="action" value="INFO">Informacje</button>
+    </form>
+</div>
+<div th:insert="fragments/footer"></div>
+</body>
+</html>

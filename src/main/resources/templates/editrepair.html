@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Edytowanie naprawy</title>
+</head>
+<body>
+<div th:insert="fragments/header"></div>
+<div class="container">
+    <form th:action="@{/editrepair}" th:object="${repairToEdit}" method="post">
+        <div class="form-group">
+            <label for="info">Co było naprawiane</label>
+            <input type="text" class="form-control" id="info" th:field="*{info}" th:value="${repairToEdit.info}" required/>
+        </div>
+        <div class="form-group">
+            <label for="info">Przebieg</label>
+            <input type="number" class="form-control" id="mileage" th:field="*{mileage}" th:value="${repairToEdit.mileage}" required/>
+        </div>
+        <div class="form-group">
+            <label for="info">Data naprawy</label>
+            <input type="date" class="form-control" id="date" th:field="*{date}" th:value="${repairToEdit.date}" required/>
+        </div>
+        <button type="submit" class="btn btn-success">Edytuj</button>
+        <a href="/repairs"><button type="button" class="btn btn-secondary">Naprawy</button></a>
+        <a href="/main"><button type="button" class="btn btn-info">Strona główna</button></a>
+    </form>
+</div>
+<div th:insert="fragments/footer"></div>
+</body>
+</html>

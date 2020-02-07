@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Dodaj autobus</title>
+</head>
+<body>
+<div th:insert="fragments/header"></div>
+<div class="container">
+   <form th:action="@{/addbus}" th:object="${busToAdd}" method="post">
+       <div class="form-group">
+           <label for="name">Nazwa</label>
+           <input type="text" class="form-control" id="name" th:field="*{name}" required/>
+       </div>
+       <div class="form-group">
+           <label for="registrationNumber">Numer rejestracyjny</label>
+           <input type="text" class="form-control" id="registrationNumber" th:field="*{registrationNumber}"/>
+       </div>
+       <div class="form-group">
+           <label for="numberOfSeats">Ilość miejsc</label>
+           <input type="text" class="form-control" id="numberOfSeats" th:field="*{numberOfSeats}" required/>
+       </div>
+       <div class="form-group">
+           <label for="dateOfInspection">Data przeglądu</label>
+           <input type="date" class="form-control" id="dateOfInspection" th:field="*{dateOfInspection}" required/>
+       </div>
+       <div class="form-group">
+           <label for="isAvailable">Dostępność</label>
+           <select class="form-control" id="isAvailable" th:field="*{isAvailable}">
+               <option th:each="isAvailable: ${T(com.sda.BusApp.model.IsAvailable).values()}"
+               th:value="${isAvailable}"
+               th:text="${isAvailable}">
+               </option>
+           </select>
+       </div>
+       <button type="submit" class="btn btn-success">Dodaj</button>
+       <a href="/main"><button type="button" class="btn btn-info">Strona główna</button></a>
+       <a href="/buses"><button type="button" class="btn btn-primary">Wstecz</button></a>
+
+
+   </form>
+</div>
+<div th:insert="fragments/footer"></div>
+</body>
+</html>

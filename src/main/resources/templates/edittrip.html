@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Edytowanie wycieczki</title>
+</head>
+<body>
+<div th:insert="fragments/header"></div>
+<div class="container">
+    <form th:action="@{/edittrip}" th:object="${tripToEdit}" method="post">
+        <div class="form-group">
+            <label for="startPlace">Miejsce wyjazdu</label>
+            <input type="text" class="form-control" id="startPlace" th:field="*{startPlace}" th:value="${tripToEdit.startPlace}" required/>
+        </div>
+        <div class="form-group">
+            <label for="finishPlace">Cel wycieczki</label>
+            <input type="text" class="form-control" id="finishPlace" th:field="*{finishPlace}" th:value="${tripToEdit.finishPlace}" required/>
+        </div>
+        <div class="form-group">
+            <label for="startDate">Data wyjazdu</label>
+            <input type="date" class="form-control" id="startDate" th:field="*{startDate}" th:value="${tripToEdit.startDate}" required/>
+        </div>
+        <div class="form-group">
+            <label for="startTime">Czas wyjazdu</label>
+            <input type="time" class="form-control" id="startTime" th:field="*{startTime}" th:value="${tripToEdit.startTime}" required/>
+        </div>
+        <div class="form-group">
+            <label for="finishDate">Data powrotu</label>
+            <input type="date" class="form-control" id="finishDate" th:field="*{finishDate}" th:value="${tripToEdit.finishDate}" required/>
+        </div>
+        <div class="form-group">
+            <label for="estimatedFinishTime">Szacowany czas powrotu</label>
+            <input type="time" class="form-control" id="estimatedFinishTime" th:field="*{estimatedFinishTime}" th:value="${tripToEdit.estimatedFinishTime}" required/>
+        </div>
+        <div class="form-group">
+            <label for="typeOfTrip">Rodzaj wyjazdu</label>
+            <select class="form-control" id="typeOfTrip" th:field="*{typeOfTrip}" required>
+                <option th:each="typeOfTrip: ${T(com.sda.BusApp.model.TypeOfTrip).values()}"
+                        th:value="${typeOfTrip}"
+                        th:text="${typeOfTrip}">
+                </option>
+
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="amountOfPassengers">Ilość pasażerów</label>
+            <input type="number" class="form-control" id="amountOfPassengers" th:field="*{amountOfPassengers}" th:value="${tripToEdit.amountOfPassengers}" required/>
+        </div>
+        <div class="form-group">
+            <label for="price">Cena</label>
+            <input type="number" class="form-control" id="price" th:field="*{price}" th:value="${tripToEdit.price}" required/>
+        </div>
+        <div class="form-group">
+            <label for="kilometers">Ilość kilometrów</label>
+            <input type="number" class="form-control" id="kilometers" th:field="*{kilometers}" th:value="${tripToEdit.kilometers}"/>
+        </div>
+        <div class="form-group">
+            <label for="phone">Numer kontaktowy</label>
+            <input type="number" class="form-control" id="phone" th:field="*{phoneNumber}" th:value="${tripToEdit.phoneNumber}" required/>
+        </div>
+        <div class="form-group">
+            <label for="name">Zamawiający</label>
+            <input type="text" class="form-control" id="name" th:field="*{name}" th:value="${tripToEdit.name}" required/>
+        </div>
+        <div class="form-group">
+            <label for="notes">Dodatkowe informacje</label>
+            <input type="text" class="form-control" id="notes" th:field="*{notes}" th:value="${tripToEdit.notes}"/>
+        </div>
+        <button type="submit" class="btn btn-success">Dalej</button>
+        <a href="/main"><button type="button" class="btn btn-info">Strona główna</button></a>
+        <a href="/trips"><button type="button" class="btn btn-primary">Wstecz</button></a>
+
+
+    </form>
+</div>
+<div th:insert="fragments/footer"></div>
+</body>
+</html>

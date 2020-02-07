@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Wyszukaj zmiany wg wykonanej operacji</title>
+</head>
+<body>
+<div th:insert="fragments/header"></div>
+<div class="container">
+    <h4>Wybierz odpowiednią operacje:</h4>
+    <form action="/filterchangesbyaction" method="post">
+        <div class="form-group">
+            <label>
+                <select th:type="text" name="operation" required>
+                    <option>Dodanie busa</option>
+                    <option>Usunięcie busa</option>
+                    <option>Edycja busa</option>
+                    <option>Dodanie kierowcy</option>
+                    <option>Usunięcie kierowcy</option>
+                    <option>Edycja kierowcy</option>
+                    <option>Dodanie wycieczki</option>
+                    <option>Usunięcie wycieczki</option>
+                    <option>Edycja wycieczki</option>
+                    <option>Dodanie naprawy</option>
+                    <option>Usunięcie naprawy</option>
+                    <option>Edycja naprawy</option>
+                    <option>Dodanie użytkownika</option>
+                    <option>Usunięcie użytkownika</option>
+                </select>
+            </label>
+        </div>
+        <button type="submit" class="btn btn-success">Dalej</button>
+        <a href="/main"><button type="button" class="btn btn-info">Strona główna</button></a>
+        <a href="/filters"><button type="button" class="btn btn-primary">Wstecz</button></a>
+    </form>
+</div>
+<div th:insert="fragments/footer"></div>
+</body>
+</html>

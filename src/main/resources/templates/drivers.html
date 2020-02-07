@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Kierowcy</title>
+</head>
+<body>
+<div th:insert="fragments/header"></div>
+<div class="container">
+    <form action="/drivers" method="post">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Imie</th>
+                <th scope="col">Nazwisko</th>
+                <th scope="col">Termin badania lekarskiego</th>
+                <th scope="col">Dostępność</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="driver : ${allDrivers}">
+                <td th:text="${driver.id}"></td>
+                <td th:text="${driver.name}"></td>
+                <td th:text="${driver.surname}"></td>
+                <td th:text="${driver.dateOfExamination}"></td>
+                <td th:text="${driver.isAvailable}"></td>
+                <td><input class="form-checked-input" type="radio" name="driverId" checked value="${driver.id}" th:value="${driver.id}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary" name="action" value="ADD">Dodaj kierowce</button>
+        <a href="/main"><button type="button" class="btn btn-info">Strona główna</button></a>
+        <button type="submit" class="btn btn-success" name="action" value="UPDATE">Edytuj kierowce</button>
+        <button type="submit" class="btn btn-danger" name="action" value="DELETE">Usuń kierowce</button>
+    </form>
+</div>
+<div th:insert="fragments/footer"></div>
+</body>
+</html>

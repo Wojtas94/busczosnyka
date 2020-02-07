@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuwanie wycieczki</title>
+</head>
+<body>
+<div th:insert="fragments/header"></div>
+<div class="container">
+    <form action="/deletetrip" th:object="${tripToDelete}" method="post">
+        <div class="alert alert-danger" role="alert">
+            Czy na pewno chcesz usunąć wycieczke z <strong th:text="${tripToDelete.startPlace}"></strong> do
+            <strong th:text="${tripToDelete.finishPlace}"></strong>
+        </div>
+        <button type="submit" class="btn btn-success">Usuń</button>
+        <a href="/main"><button type="button" class="btn btn-info">Strona główna</button></a>
+        <a href="/trips"><button type="button" class="btn btn-primary">Wstecz</button></a>
+
+    </form>
+</div>
+<div th:insert="fragments/footer"></div>
+</body>
+</html>

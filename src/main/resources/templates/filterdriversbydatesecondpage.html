@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Dostępni kierowcy</title>
+</head>
+<body>
+<div th:insert="fragments/header"></div>
+<div class="container">
+    <form action="/filterdriversbydatesecondpage" method="get">
+        <h4>Dostępni kierowcy:</h4>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Imię</th>
+                <th scope="col">Nazwisko</th>
+                <th scope="col">Termin badania lekarskiego</th>
+                <th scope="col">Dostępność</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="driver : ${drivers}">
+                <td th:text="${driver.id}"></td>
+                <td th:text="${driver.name}"></td>
+                <td th:text="${driver.surname}"></td>
+                <td th:text="${driver.dateOfExamination}"></td>
+                <td th:text="${driver.isAvailable}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="/main"><button type="button" class="btn btn-info">Strona główna</button></a>
+        <a href="/filters"><button type="button" class="btn btn-primary">Filtry</button></a>
+        <button onclick="goBack()" class="btn btn-primary" type="button">Wstecz</button>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+
+    </form>
+</div>
+<div th:insert="fragments/footer"></div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuwanie kierowcy</title>
+</head>
+<body>
+<div th:insert="fragments/header"></div>
+<div class="container">
+    <form action="/deletedriver" th:object="${driverToDelete}" method="post">
+        <div class="alert alert-danger" role="alert">
+            Czy na pewno chcesz usunąć kierowce <strong th:text="${driverToDelete.name} "></strong>?
+        </div>
+        <button type="submit" class="btn btn-success">Usuń</button>
+        <a href="/main"><button type="button" class="btn btn-info">Strona główna</button></a>
+        <a href="/buses"><button type="button" class="btn btn-primary">Wstecz</button></a>
+
+    </form>
+</div>
+<div th:insert="fragments/footer"></div>
+</body>
+</html>

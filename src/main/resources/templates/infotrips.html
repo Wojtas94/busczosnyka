@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Wycieczki informacje</title>
+</head>
+<body>
+<div th:insert="fragments/header"></div>
+<div class="container">
+    <form action="/infotrips" method="get">
+        <table class="table table-user-information">
+            <tbody>
+            <tr>
+                <td>Miejsce wyjazdu:</td>
+                <td th:text=${tripDto.startPlace}></td>
+            </tr>
+            <tr>
+                <td>Cel wycieczki:</td>
+                <td th:text=${tripDto.finishPlace}></td>
+            </tr>
+            <tr>
+                <td>Data i czas wyjazdu:</td>
+                <td th:text="${#temporals.format(tripDto.startDateAndTime, 'dd-MM-yyyy HH:mm')}"></td>
+            </tr>
+            <tr>
+                <td>Data i czas powrotu:</td>
+                <td th:text="${#temporals.format(tripDto.finishDateAndTime, 'dd-MM-yyyy HH:mm')}"></td>
+            </tr>
+            <tr>
+                <td>Rodzaj wyjazdu:</td>
+                <td th:text="${tripDto.typeOfTrip}"></td>
+            </tr>
+            <tr>
+                <td>Numer kontaktowy:</td>
+                <td th:text="${tripDto.phoneNumber}"></td>
+            </tr>
+            <tr>
+                <td>Zamawiający:</td>
+                <td th:text="${tripDto.name}"></td>
+            </tr>
+            <tr>
+                <td>Ilość pasażerów:</td>
+                <td th:text="${tripDto.amountOfPassengers}"></td>
+            </tr>
+            <tr>
+                <td>Cena:</td>
+                <td th:text="${tripDto.price}"></td>
+            </tr>
+            <tr>
+                <td>Ilość kilometrów:</td>
+                <td th:text="${tripDto.kilometers}"></td>
+            </tr>
+            <tr>
+                <td>Dodatkowe informacje:</td>
+                <td th:text="${tripDto.notes}"></td>
+            </tr>
+            <tr>
+                <td>Kierowcy:</td>
+                <td th:text="${tripDto.drivers}"></td>
+            </tr>
+            <tr>
+                <td>Bus/y:</td>
+                <td th:text="${tripDto.buses}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="/main"><button type="button" class="btn btn-info">Strona główna</button></a>
+        <a href="/trips"><button type="button" class="btn btn-primary">Wycieczki</button></a>
+    </form>
+</div>
+<div th:insert="fragments/footer"></div>
+</body>
+</html>

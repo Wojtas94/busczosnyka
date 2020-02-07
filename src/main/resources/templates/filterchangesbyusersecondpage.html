@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Filtr zmian według użytkownika</title>
+</head>
+<body>
+<div th:insert="fragments/header"></div>
+<div class="container">
+    <form action="/filterchangesbyusersecondpage" method="get">
+        <h4>Zmiany:</h4>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Login</th>
+                <th scope="col">Co zostało zmienione</th>
+                <th scope="col">Data zmiany</th>
+                <th scope="col">Informacje szczegółowe</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="change : ${listOfChanges}">
+                <td th:text="${change.id}"></td>
+                <td th:text="${change.login}"></td>
+                <td th:text="${change.action}"></td>
+                <td th:text="${change.dateOfChange}"></td>
+                <td th:text="${change.moreInfo}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="/main"><button type="button" class="btn btn-info">Strona główna</button></a>
+        <a href="/filters"><button type="button" class="btn btn-primary">Filtry</button></a>
+        <button onclick="goBack()" class="btn btn-primary" type="button">Wstecz</button>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+
+    </form>
+</div>
+<div th:insert="fragments/footer"></div>
+</body>
+</html>

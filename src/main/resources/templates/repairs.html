@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Naprawy</title>
+</head>
+<body>
+<div th:insert="fragments/header"></div>
+<div class="container">
+    <form action="/repairs" method="post">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Co było naprawiane</th>
+                <th scope="col">Przebieg</th>
+                <th scope="col">Data naprawy</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="repair : ${allRepairs}">
+                <td th:text="${repair.id}"></td>
+                <td th:text="${repair.info}"></td>
+                <td th:text="${repair.mileage}"></td>
+                <td th:text="${repair.date}"></td>
+                <td><input class="form-checked-input" type="radio" name="repairId" checked value="${repair.id}" th:value="${repair.id}" ></td>
+
+            </tr>
+            </tbody>
+        </table>
+        <a href="/main"><button type="button" class="btn btn-info">Strona główna</button></a>
+        <a href="/buses"><button type="button" class="btn btn-warning">Busy</button></a>
+        <button type="submit" class="btn btn-primary" name="action" value="ADD">Dodaj naprawę</button>
+        <button type="submit" class="btn btn-success" name="action" value="UPDATE">Edytuj naprawę</button>
+        <button type="submit" class="btn btn-danger" name="action" value="DELETE">Usuń naprawę</button>
+    </form>
+</div>
+<div th:insert="fragments/footer"></div>
+</body>
+</html>

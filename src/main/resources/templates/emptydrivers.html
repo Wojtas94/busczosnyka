@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Brak kierowców</title>
+</head>
+<body>
+<div th:insert="fragments/header"></div>
+<div class="container">
+    <form action="/emptydrivers" method="post">
+        <div class="alert alert-primary" role="alert">
+            Baza kierowców jest pusta
+        </div>
+        <button class="btn btn-primary" type="submit">Dodaj kierowce</button>
+    </form>
+   <a href="/main"><button type = "button" class="btn btn-info">Strona główna</button> </a>
+</div>
+<div th:insert="fragments/footer"></div>
+</body>
+</html>

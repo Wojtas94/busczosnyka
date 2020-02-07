@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Strona główna</title>
+</head>
+<body>
+    <div th:insert="fragments/header"></div>
+    <div class="container">
+        <form action="/main" method="post">
+            <div th:if="${#lists.isEmpty(tripsWhichStartInNext7Days)}">
+                <div class="alert alert-dark" role="alert">
+                    Nie ma wycieczek w najbliższych 7 dniach.
+                </div>
+            </div>
+            <br><br>
+            <div th:if="!${#lists.isEmpty(tripsWhichStartInNext7Days)}">
+                <div class="alert alert-dark" role="alert">
+                    Wycieczki w najbliższych 7 dniach:
+                </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Data i czas wyjazdu</th>
+                        <th scope="col">Data i czas powrotu</th>
+                        <th scope="col">Miejsce docelowe</th>
+                        <th scope="col">Ilość pasażerów</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="trip : ${tripsWhichStartInNext7Days}">
+                        <td th:text="${trip.id}"></td>
+                        <td th:text="${#temporals.format(trip.startDateAndTime, 'dd-MM-yyyy HH:mm')}"></td>
+                        <td th:text="${#temporals.format(trip.finishDateAndTime, 'dd-MM-yyyy HH:mm')}"></td>
+                        <td th:text="${trip.finishPlace}"></td>
+                        <td th:text="${trip.amountOfPassengers}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div th:id="changes">
+                <div class="alert alert-success" role="alert">
+                    Ostatnie 3 zmiany dokonane przez użytkowników aplikacji:
+                </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Login</th>
+                        <th scope="col">Data i czas zmiany</th>
+                        <th scope="col">Dokonana zmiana</th>
+                        <th scope="col">Więcej informacji</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="change : ${newestThreeChanges}">
+                        <td th:text="${change.id}"></td>
+                        <td th:text="${change.login}"></td>
+                        <td th:text="${#temporals.format(change.dateOfChange, 'dd-MM-yyyy HH:mm')}"></td>
+                        <td th:text="${change.action}"></td>
+                        <td th:text="${change.moreInfo}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div th:if="${#lists.isEmpty(busesNeededInspection)}">
+                <div class="alert alert-info" role="alert">
+                    Obecnie nie ma autobusów wymagających przeglądu technicznego.
+                </div>
+            </div>
+            <div th:if="!${#lists.isEmpty(busesNeededInspection)}">
+                <div class="alert alert-info" role="alert">
+                    Busy wymagające wykonania przeglądu technicznego:
+                </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nazwa</th>
+                        <th scope="col">Data przeglądu</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="bus : ${busesNeededInspection}">
+                        <td th:text="${bus.id}"></td>
+                        <td th:text="${bus.name}"></td>
+                        <td th:text="${bus.dateOfInspection}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div th:if="${#lists.isEmpty(driversWhoNeedExamination)}">
+                <div class="alert alert-warning" role="alert">
+                    Obecnie kierowcy nie wymagają wykonania badań lekarskich.
+                </div>
+            </div>
+            <br><br>
+            <div th:if="!${#lists.isEmpty(driversWhoNeedExamination)}">
+                <div class="alert alert-warning" role="alert">
+                    Kierowcy którzy wymagają wykonania badania lekarskiego:
+                </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Imię</th>
+                        <th scope="col">Nazwisko</th>
+                        <th scope="col">Termin badania lekarskiego</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="driver : ${driversWhoNeedExamination}">
+                        <td th:text="${driver.id}"></td>
+                        <td th:text="${driver.name}"></td>
+                        <td th:text="${driver.surname}"></td>
+                        <td th:text="${driver.dateOfExamination}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br><br>
+
+            <div sec:authorize ="hasAuthority('ROLE_ADMIN')">
+                <button class="btn btn-primary" type="submit" name="menu" value="BUS">Busy</button>
+                <button class="btn btn-secondary" type="submit" name="menu" value="DRIVER">Kierowcy</button>
+                <button class="btn btn-warning" type="submit" name="menu" value="TRIP">Wycieczki</button>
+                <button class="btn btn-info" type="submit" name="menu" value="FILTR">Wyszukaj</button>
+                <button class="btn btn-success" type="submit" name="menu" value="CENA">Oblicz cenę</button>
+                <button class="btn btn-dark" type="submit" name="menu" value="USER">Użytkownicy</button>
+            </div>
+            <div sec:authorize ="hasAuthority('ROLE_USER')">
+                <button class="btn btn-primary" type="submit" name="menu" value="BUS">Busy</button>
+                <button class="btn btn-secondary" type="submit" name="menu" value="DRIVER">Kierowcy</button>
+                <button class="btn btn-warning" type="submit" name="menu" value="TRIP">Wycieczki</button>
+                <button class="btn btn-info" type="submit" name="menu" value="FILTR">Wyszukaj</button>
+                <button class="btn btn-success" type="submit" name="menu" value="CENA">Oblicz cenę</button>
+            </div>
+        </form>
+    </div>
+    <div th:insert="fragments/footer"></div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Wycieczki po zamawiającym</title>
+</head>
+<body>
+<div th:insert="fragments/header"></div>
+<div class="container">
+    <h4>Wycieczki w podanym przedziale czasu</h4>
+    <form action="/filtertripsbydatesecondpage" method="get">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Data i czas wyjazdu</th>
+                <th scope="col">Data i czas powrotu</th>
+                <th scope="col">Miejsce wyjazdu</th>
+                <th scope="col">Miesce docelowe</th>
+                <th scope="col">Ilość pasażerów</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="trip : ${trips}">
+                <td th:text="${trip.id}"></td>
+                <td th:text="${#temporals.format(trip.startDateAndTime, 'dd-MM-yyyy HH:mm')}"></td>
+                <td th:text="${#temporals.format(trip.finishDateAndTime, 'dd-MM-yyyy HH:mm')}"></td>
+                <td th:text="${trip.startPlace}"></td>
+                <td th:text="${trip.finishPlace}"></td>
+                <td th:text="${trip.amountOfPassengers}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="/main"><button type="button" class="btn btn-info">Strona główna</button></a>
+        <a href="/filters"><button type="button" class="btn btn-primary">Filtry</button></a>
+        <button onclick="goBack()" class="btn btn-primary" type="button">Wstecz</button>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+    </form>
+</div>
+<div th:insert="fragments/footer"></div>
+</body>
+</html>l>

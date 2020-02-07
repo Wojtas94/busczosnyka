@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Nie możesz usunąć administratora</title>
+</head>
+<body>
+<div th:insert="fragments/header"></div>
+<div class="container">
+    <div class="alert alert-danger" role="alert">
+        Nie możesz usunąć administratora!
+    </div>
+    <a href="main"><button type="button" class="btn btn-info">Strona główna</button> </a>
+    <a href="/users"><button type="button" class="btn btn-secondary">Użytkownicy</button> </a>
+</div>
+<div th:insert="fragments/footer"></div>
+</body>
+</html>
