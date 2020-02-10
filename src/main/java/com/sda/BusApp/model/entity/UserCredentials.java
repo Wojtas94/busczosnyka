@@ -34,7 +34,6 @@ public class UserCredentials  implements Serializable {
     private IsPasswordChanged isPasswordChanged;
 
     @OneToOne(cascade=CascadeType.ALL)
-    @Column(name = "user_id")
     private User user;
 
 
