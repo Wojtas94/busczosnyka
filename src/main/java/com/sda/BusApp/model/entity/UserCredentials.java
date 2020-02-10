@@ -34,7 +34,7 @@ public class UserCredentials  implements Serializable {
     private IsPasswordChanged isPasswordChanged;
 
     @OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JoinColumn(name = "users_id", referencedColumnName = "id")
     private User user;
 
 
