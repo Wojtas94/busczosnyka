@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-@Entity(name = "user")
+@Entity(name = "userr")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
