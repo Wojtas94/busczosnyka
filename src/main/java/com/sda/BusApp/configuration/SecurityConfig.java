@@ -22,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+//        http.authorizeRequests()
 //                .antMatchers("/index*")
 //                .hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
 //                .antMatchers("/add*")
@@ -57,21 +57,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .hasAnyAuthority("ROLE_ADMIN", "ROLE_USER")
 //                .antMatchers("/drivers")
 //                .hasAnyAuthority("ROLE_ADMIN", "ROLE_USER")
-                .anyRequest().permitAll()
-                .and()
-                .csrf().disable()
-                .headers().frameOptions().disable()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .usernameParameter("login")
-                .passwordParameter("password")
-                .loginProcessingUrl("/login-process")
-                .defaultSuccessUrl("/main", true)
-                .and()
-                .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login");
+//                .anyRequest().permitAll()
+//                .and()
+//                .csrf().disable()
+//                .headers().frameOptions().disable()
+//                .and()
+//                .formLogin()
+//                .loginPage("/login")
+//                .usernameParameter("login")
+//                .passwordParameter("password")
+//                .loginProcessingUrl("/login-process")
+//                .defaultSuccessUrl("/main", true)
+//                .and()
+//                .logout()
+//                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+//                .logoutSuccessUrl("/login");
     }
 
     @Override
@@ -81,14 +81,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .password(bCryptPasswordEncoder.encode("password"))
 //                .roles("USER")
 //                .and()
-//                .withUser("admin")
-//                .password(bCryptPasswordEncoder.encode("admin"))
-//                .roles("ADMIN");
-        auth.jdbcAuthentication()
-                .usersByUsernameQuery("select u.login, u.password, 1 from user_credentials u where u.login=?") //1 oznacza aktywny user
-                .authoritiesByUsernameQuery("select u.login, u.role, 1 from user_credentials u where u.login=?")
-                .dataSource(jdbcTemplate.getDataSource())
-                .passwordEncoder(bCryptPasswordEncoder);
+////                .withUser("admin")
+////                .password(bCryptPasswordEncoder.encode("admin"))
+////                .roles("ADMIN");
+//        auth.jdbcAuthentication()
+//                .usersByUsernameQuery("select u.login, u.password, 1 from user_credentials u where u.login=?") //1 oznacza aktywny user
+//                .authoritiesByUsernameQuery("select u.login, u.role, 1 from user_credentials u where u.login=?")
+//                .dataSource(jdbcTemplate.getDataSource())
+//                .passwordEncoder(bCryptPasswordEncoder);
     }
 
 
