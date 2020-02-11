@@ -43,14 +43,14 @@ public class BusController {
 
     @GetMapping("/emptybuses")
     public ModelAndView emptyBusGet() {
-//        LOGGER.info("user: " + Authentication.class.getName() + ", EmptyBuses - get");
-        return new ModelAndView("/emptybuses");
+        LOGGER.info("user: " + Authentication.class.getName() + ", EmptyBuses - get");
+        return new ModelAndView("emptybuses");
     }
 
     @PostMapping("/emptybuses")
     public RedirectView emptyBusPost() {
         LOGGER.info("user: " + Authentication.class.getName() + "EmptyBuses - post, redirect to /addbus");
-        return new RedirectView("/addbus");
+        return new RedirectView("addbus");
     }
 
     @RequestMapping("/addbus")
