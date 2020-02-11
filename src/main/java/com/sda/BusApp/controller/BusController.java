@@ -43,7 +43,7 @@ public class BusController {
 
     @GetMapping("/emptybuses")
     public ModelAndView emptyBusGet() {
-        LOGGER.info("user: " + Authentication.class.getName() + ", EmptyBuses - get");
+//        LOGGER.info("user: " + Authentication.class.getName() + ", EmptyBuses - get");
         return new ModelAndView("/emptybuses");
     }
 
