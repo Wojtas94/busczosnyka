@@ -39,11 +39,11 @@ public class IndexController {
 
     @RequestMapping(value ="/main")
     public String indexGet(Model model, Authentication authentication, HttpSession session) {
-//        UserCredentialsDto userCredentialsDto = userCredentialsService.getUserCredentialsByLogin(authentication.getName());
-//        if (userCredentialsDto.getIsPasswordChanged().equals(IsPasswordChanged.FALSE)) {
-//            session.setAttribute("user", userCredentialsDto);
-//            return "userchangepassword";
-//        }
+        UserCredentialsDto userCredentialsDto = userCredentialsService.getUserCredentialsByLogin(authentication.getName());
+        if (userCredentialsDto.getIsPasswordChanged().equals(IsPasswordChanged.FALSE)) {
+            session.setAttribute("user", userCredentialsDto);
+            return "userchangepassword";
+        }
         model.addAttribute("newestThreeChanges", informationService.getNewestThreeInformation());
         model.addAttribute("busesNeededInspection", busService.listOfBusDtosWithNeededInspection());
         model.addAttribute("driversWhoNeedExamination", driverService.listOfDriversWhoNeedExaminationIn45Days());
