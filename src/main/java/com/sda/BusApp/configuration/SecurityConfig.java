@@ -73,6 +73,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login");
     }
+    
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
