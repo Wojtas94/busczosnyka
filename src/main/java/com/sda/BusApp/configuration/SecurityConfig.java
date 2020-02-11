@@ -73,18 +73,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login");
     }
-    
+
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("user")
-                .password(bCryptPasswordEncoder.encode("password"))
-                .roles("USER")
-                .and()
-                .withUser("admin")
-                .password(bCryptPasswordEncoder.encode("admin"))
-                .roles("ADMIN");
+//        auth.inMemoryAuthentication()
+//                .withUser("user")
+//                .password(bCryptPasswordEncoder.encode("password"))
+//                .roles("USER")
+//                .and()
+//                .withUser("admin")
+//                .password(bCryptPasswordEncoder.encode("admin"))
+//                .roles("ADMIN");
         auth.jdbcAuthentication()
                 .usersByUsernameQuery("select u.login, u.password, 1 from user_credentials u where u.login=?") //1 oznacza aktywny user
                 .authoritiesByUsernameQuery("select u.login, u.role, 1 from user_credentials u where u.login=?")
