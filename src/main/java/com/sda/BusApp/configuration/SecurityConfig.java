@@ -84,11 +84,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 ////                .withUser("admin")
 ////                .password(bCryptPasswordEncoder.encode("admin"))
 ////                .roles("ADMIN");
-        auth.jdbcAuthentication()
-                .usersByUsernameQuery("select u.login, u.password, 1 from user_credentials u where u.login=?") //1 oznacza aktywny user
-                .authoritiesByUsernameQuery("select u.login, u.role, 1 from user_credentials u where u.login=?")
-                .dataSource(jdbcTemplate.getDataSource())
-                .passwordEncoder(bCryptPasswordEncoder);
+//        auth.jdbcAuthentication()
+//                .usersByUsernameQuery("select u.login, u.password, 1 from user_credentials u where u.login=?") //1 oznacza aktywny user
+//                .authoritiesByUsernameQuery("select u.login, u.role, 1 from user_credentials u where u.login=?")
+//                .dataSource(jdbcTemplate.getDataSource())
+//                .passwordEncoder(bCryptPasswordEncoder);
     }
 
 
