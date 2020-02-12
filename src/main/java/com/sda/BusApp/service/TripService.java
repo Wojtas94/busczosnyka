@@ -171,7 +171,10 @@ public class TripService {
         double fuel = Double.parseDouble(req.getParameter("fuel"));
         double combustion = Double.parseDouble(req.getParameter("combustion"));
         double profitPerKilometer = Double.parseDouble(req.getParameter("profitPerKilometer"));
-        double additionalFees = Double.parseDouble(req.getParameter("additionalFees"));
+        double additionalFees;
+        if (req.getParameter("additionalFees").equals("")) {
+            additionalFees = 0;
+        } else additionalFees = Double.parseDouble(req.getParameter("additionalFees"));
         String amountOfHours = req.getParameter("amountOfHours");
         int price = (int) ((amountOfKilometers * 0.01 * fuel * combustion + profitPerKilometer * amountOfKilometers
                 + moneyForDriver + additionalFees) * 1.08);
