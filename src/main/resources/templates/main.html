@@ -8,6 +8,22 @@
     <div th:insert="fragments/header"></div>
     <div class="container">
         <form action="/main" method="post">
+            <div sec:authorize ="hasAuthority('ROLE_ADMIN')">
+                <button class="btn btn-primary" type="submit" name="menu" value="BUS">Busy</button>
+                <button class="btn btn-secondary" type="submit" name="menu" value="DRIVER">Kierowcy</button>
+                <button class="btn btn-warning" type="submit" name="menu" value="TRIP">Wycieczki</button>
+                <button class="btn btn-info" type="submit" name="menu" value="FILTR">Wyszukaj</button>
+                <button class="btn btn-success" type="submit" name="menu" value="CENA">Oblicz cenę</button>
+                <button class="btn btn-dark" type="submit" name="menu" value="USER">Użytkownicy</button>
+            </div>
+            <div sec:authorize ="hasAuthority('ROLE_USER')">
+                <button class="btn btn-primary" type="submit" name="menu" value="BUS">Busy</button>
+                <button class="btn btn-secondary" type="submit" name="menu" value="DRIVER">Kierowcy</button>
+                <button class="btn btn-warning" type="submit" name="menu" value="TRIP">Wycieczki</button>
+                <button class="btn btn-info" type="submit" name="menu" value="FILTR">Wyszukaj</button>
+                <button class="btn btn-success" type="submit" name="menu" value="CENA">Oblicz cenę</button>
+            </div>
+            <br><br>
             <div th:if="${#lists.isEmpty(tripsWhichStartInNext7Days)}">
                 <div class="alert alert-dark" role="alert">
                     Nie ma wycieczek w najbliższych 7 dniach.
@@ -121,23 +137,6 @@
                     </tr>
                     </tbody>
                 </table>
-            </div>
-            <br><br>
-
-            <div sec:authorize ="hasAuthority('ROLE_ADMIN')">
-                <button class="btn btn-primary" type="submit" name="menu" value="BUS">Busy</button>
-                <button class="btn btn-secondary" type="submit" name="menu" value="DRIVER">Kierowcy</button>
-                <button class="btn btn-warning" type="submit" name="menu" value="TRIP">Wycieczki</button>
-                <button class="btn btn-info" type="submit" name="menu" value="FILTR">Wyszukaj</button>
-                <button class="btn btn-success" type="submit" name="menu" value="CENA">Oblicz cenę</button>
-                <button class="btn btn-dark" type="submit" name="menu" value="USER">Użytkownicy</button>
-            </div>
-            <div sec:authorize ="hasAuthority('ROLE_USER')">
-                <button class="btn btn-primary" type="submit" name="menu" value="BUS">Busy</button>
-                <button class="btn btn-secondary" type="submit" name="menu" value="DRIVER">Kierowcy</button>
-                <button class="btn btn-warning" type="submit" name="menu" value="TRIP">Wycieczki</button>
-                <button class="btn btn-info" type="submit" name="menu" value="FILTR">Wyszukaj</button>
-                <button class="btn btn-success" type="submit" name="menu" value="CENA">Oblicz cenę</button>
             </div>
         </form>
     </div>
