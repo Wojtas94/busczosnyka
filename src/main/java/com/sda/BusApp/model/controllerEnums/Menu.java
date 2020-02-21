@@ -6,5 +6,6 @@ public enum Menu {
     TRIP,
     CENA,
     FILTR,
-    USER;
+    USER,
+    NEW_PASSWORD;
 }

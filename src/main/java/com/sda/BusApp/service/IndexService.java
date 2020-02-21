@@ -49,6 +49,8 @@ public class IndexService {
                     return new RedirectView("emptyusers");
                 }
                 return new RedirectView("users");
+            case NEW_PASSWORD:
+                return new RedirectView("userchangepassword");
 
         }
         throw new IllegalStateException("bad argument");

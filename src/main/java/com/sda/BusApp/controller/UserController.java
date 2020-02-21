@@ -104,8 +104,8 @@ public class UserController {
     }
 
     @PostMapping("/userchangepassword")
-    public RedirectView userChangePasswordPost(HttpSession session, HttpServletRequest req) {
-        UserCredentialsDto userCredentialsDto = (UserCredentialsDto) session.getAttribute("user");
+    public RedirectView userChangePasswordPost(HttpSession session, HttpServletRequest req, Authentication authentication) {
+        UserCredentialsDto userCredentialsDto = userCredentialsService.getUserCredentialsByLogin(authentication.getName());
         userCredentialsDto.setPassword(bCryptPasswordEncoder.encode(req.getParameter("password")));
         userCredentialsService.changePassword(userCredentialsDto);
         return new RedirectView("main");
